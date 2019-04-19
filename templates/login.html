@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Login page</title>
+
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+</head>
+
+<body>
+    <div class="login-box">
+        <img src="/assets/chatapp.png" class="enter">
+        <h1>Login Here</h1>
+        <form name="myform" novalidate>
+            <p>Email-Id</p>
+            <input type="email" name="email" ng-model="emailM" placeholder="Enter EmailId" required>
+            <span ng-show="myform.email.$dirty && myform.email.$invalid">
+                <span ng-show="myform.email.$error.required">email required</span>
+                <span ng-show="myform.email.$error.email">invalid email</span>
+            </span>
+            <p for="psw">Password</p>
+            <input type="password" name="password" ng-model="PasswordM" placeholder="Enter Password" required
+                minlength="6" required autocomplete="on" title="Must contain  at least 6 or more characters" required>
+            <span ng-show="myform.psw.$dirty && myform.psw.$invalid">invalid password</span>
+            <span>{{message}}</span>
+            <input type="submit" name="submit" ng-click = 'login()' value="Login">
+
+            <a ui-sref="forgotPassword">Forget Password</a>
+            |
+            <a ui-sref="register">Register</a>
+        </form>
+    </div>
+</body>
+
+</html>
