@@ -7,17 +7,20 @@
  * @since       :   05-04-2019
  * 
  * *********************************************************************************************/
+app.controller('registrationctrl', function ($scope, registrationService) {
+    //   console.log('in register controller **************');
+    //   console.log('scope    ', $scope);
+    console.log("i am here");
 
-app.controller('registrationctrl', function ($scope,registrationService) {
+
     $scope.register = function () {
         let data = {
             username: $scope.username,
-            emailid: $scope.email,
-            password: $scope.password,
-            confirmpassword: $scope.confirmPassword
+            email: $scope.email,
+            password: $scope.password
         }
-        console.log('data in controller', data);  
-        return registrationService(data,$scope)
+        console.log('data in controller', data);
+        registrationService.register(data, $scope)
     }
-    
+
 })

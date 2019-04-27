@@ -14,21 +14,28 @@ app.service('loginService', function ($http, $location) {
          * data passed in login is getting from controller ie:input data entered in html page
          */
         glob.login = function (data, $scope) {
-            console.log('inside service ', data);
+            console.log('inside service ===>', data);
             $http({
-                method: 'POST',
+                method: 'post',
                 url: 'http://localhost:3000/serviceLogin',
                 data: data
             }).then(function successCallBack(response) {
-                console.log("Login successful");
-                console.log("login response:", response);
+                console.log("Login successfulsdfdfsdfsdff",response.data.result._id);
+                //console.log("login response:", response.data.token);
+               localStorage.setItem('token',response.data.token);
+                localStorage.setItem('userid',response.data.result._id);
+                localStorage.setItem('username',response.data.result.username);
+                localStorage.setItem('email',response.data.result.email);
+            
+                $location.path('dashBoard');//for redirecting to dashboard
+            }, err => {
+                // console.log("ha ha");
 
-                localStorage
+                console.log("error is coming!!!!!!  ",err);
             })
         }
     }
     catch (err) {
-        console.log(err);
- 
+        console.log("error is rendering!",err);
     }
 })

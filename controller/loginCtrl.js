@@ -13,7 +13,7 @@ app.controller("loginctrl", function ($scope, loginService) {
 
         if ($scope.emailM != undefined || $scope.PasswordM != undefined) {
             let data = {
-                username: $scope.emailM,
+                email: $scope.emailM,
                 password: $scope.PasswordM
             }
             console.log('data in controller', data);

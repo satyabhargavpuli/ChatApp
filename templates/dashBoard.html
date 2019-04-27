@@ -1,0 +1,85 @@
+<!-- <div ng-repeat="x in users">
+  {{x.username}}
+</div> -->
+  <!-- <link rel="stylesheet" type="text/css" href="/css/dashBoard.css">
+
+<div>
+<div class="header">
+  <div class="chatapp">ChatApp</div>
+  <div class="welcome">Welcome{{}}</div>
+  <div class="logout">signout</div>
+</div>
+<div class="sidebar">
+  <div ng-repeat="x in users">
+    <ol>{{x.username}}</ol>
+    
+  </div>
+  <span class="chatcontiner"></span>
+
+</div>
+
+<div class="chatMessage">
+  hiii message
+  {{}}
+</div>
+<div class="search">
+  <input type="text" name="text" ng-model="text">
+  <button ng-click="add()">
+    sent  
+  </button>
+</div>
+</div>  -->
+
+
+<head>
+  <link href="../css/dashBoard.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <!-- <div class="loader">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div> -->
+  <div class="header">
+    <span class="chattxt">ChatApp</span>
+    <span class="weltxt">Welcome {{myName | uppercase}}</span>
+    <span id="signouttxt" ng-click="signout()">Signout</span>
+  </div>
+  <div class="usermenu">
+    <table>
+      <tr>
+     
+        <th id="th2">Name</th>
+      <tr ng-repeat="user in users" ng-click="goToUser(user)" ng-show="myName != user.firstname">
+        <!-- <td class="sln">{{ users.indexOf(user) }}</td> -->
+        <td class="uname" ng-click="useractive">{{ user.username }}</td>
+      </tr>
+    </table>
+  </div>
+  <div id="style-2" class="chatBox">
+    <article>
+      <div class="recname">
+        {{clientName}}
+      </div>
+      <section>
+        <form>
+          <div class="chatlogs" id="style-2" ng-repeat="x in allMsg">
+            <div class="friend" ng-show="myId != x.senderUserId">
+              <p id="innerdec1">{{x.message}}</p>
+            </div>
+            <div class="self" ng-show="myId == x.senderUserId">
+              <p id="innerdec2">{{x.message}}</p>
+            </div>
+          </div>
+        </form>
+      </section>
+    </article>
+  </div>
+  <div>
+    <textarea ng-model="message" ng-keyup="$event.keyCode == 13 &amp;&amp; sendMessage()" class="textbox"
+      placeholder="Type any stuff.."></textarea>
+    <button type="button" ng-click="sendMessage()" class="sendbutton">Send</button>
+  </div>
+</body>

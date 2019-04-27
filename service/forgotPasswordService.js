@@ -8,25 +8,27 @@
  * 
  * *********************************************************************************************/
 
- app.service('forgotPasswordService'),function($http,$location) {
+ app.service('forgotPasswordService',function($http,$location) {
      try {
          this.forgotpassword = function (data,$scope) {
              console.log('inside service'+data);
              $http({
                 method : "POST",
-                  url  : 'http://localhost:3000/serviceUserForgot',
+                  url  : 'http://localhost:3000/forgotPwdService',
                   data :data
               }).then(function successCallBack(response) {
                 console.log("Registration successful");
                 console.log("Registration response:", response);
     
-                localStorage.setItem()
-            
-    
-            })
+            }),
+            function errorCallBack(error) {
+                $scope.msg = "sry, not a valid email";
+                console.log(error);
+            }
              
          }
      } catch (error) {
+         console.log("error is hitting",error);
          
      }
- }
+ });

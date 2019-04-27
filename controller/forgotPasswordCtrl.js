@@ -7,15 +7,18 @@
  * @since       :   05-04-2019
  * 
  * *********************************************************************************************/
-app.controller("forgotPasswordctrl", function ($scope,forgotPasswordService) {
+app.controller("forgotCtrl", function ($scope,forgotPasswordService) {
+    console.log("yipeeeeeeee{}{}{}",$scope);
+    
     $scope.forgotpassword = function () 
     {
 
         let data = {
 
-            emailId:$scope.emailId
+            email:$scope.email
         }
         console.log('data in controller', data);
-        return forgotPasswordService(data,$scope);
+        forgotPasswordService.forgotpassword(data,$scope);
+        // forgotpassword(data,$scope);
     }
 });

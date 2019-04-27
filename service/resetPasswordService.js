@@ -1,6 +1,3 @@
-import { createVerify } from "crypto";
-import { log } from "util";
-
 /************************************************************************************************
  * @description :   To pass the data to the backend
  * 
@@ -11,25 +8,23 @@ import { log } from "util";
  * 
  * *********************************************************************************************/
 
- app.service('resetPasswordService'),function($http,$location) {
-    try {
-      this.resetPassword = function (data,$scope) {
-        console.log('in service'+data);
-        $http({
-           method : "POST",
-           url : 'http://localhost:3000/resetPasswordService',
-           data : data,
-        }).then(function successCallBack(response) {
-         console.log("Registration successful");
-         console.log("Registration response:", response);
-          //here localstorage is used to store the data and send it to specifies key
-         
-     
-
-     })
+app.service('resetPasswordService', function ($http) {
+  try {
+    this.resetPassword = function (data, $scope) {
+      console.log('in service' + data);
+      $http({
+        method: "POST",
+        url: 'http://localhost:3000/resetPasswordService/token',
+        data: data,
+      }).then(function successCallBack(response) {
+        console.log("Registration successful");
+        console.log("Registration response:", response);
+        //here localstorage is used to store the data and send it to specifies key
         
-      }
-    } catch (error) {
-       
+      })
+
     }
-     }
+  } catch (error) {
+
+  }
+});
